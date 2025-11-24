@@ -3,111 +3,285 @@
 }
 
 html {
-    background: #1a1a1a;
-    color: #e0e0e0;
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: #1d1c1d;
+    --text-secondary: #616061;
+    --border-color: #e8e8e8;
+    --shadow-color: rgba(0, 0, 0, 0.04);
+    
+    background: var(--bg-primary);
+    color: var(--text-primary);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     font-size: 16px;
+}
+
+@media (prefers-color-scheme: dark) {
+    html {
+        --bg-primary: #1d1c1d;
+        --bg-secondary: #2d2c2d;
+        --text-primary: #ffffff;
+        --text-secondary: #ababab;
+        --border-color: #3a3a3a;
+        --shadow-color: rgba(0, 0, 0, 0.2);
+    }
 }
 
 body {
     max-width: 800px;
     margin: 0 auto;
-    padding: 3rem 2rem;
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.logo {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #e7335f 25%, #36c5f0 25%, #36c5f0 50%, #2eb67a 50%, #2eb67a 75%, #ecb22e 75%); /* Multicolored Slack logo squares */
+    margin-right: 0.5rem;
 }
 
 h1 {
-    margin: 0 0 0.5rem 0;
-    font-size: 2em;
+    font-size: 1.5em;
     font-weight: 600;
-    color: #e0e0e0;
+    color: var(--text-primary);
+    margin: 0;
 }
 
-.subtitle {
-    margin: 0 0 3rem 0;
-    font-size: 0.9em;
-    color: #888;
+h1::after {
+    color: var(--text-secondary);
     font-weight: 400;
-    letter-spacing: 0.05em;
 }
 
-.migration-chunk {
-    padding: 1.5em;
-    margin: 1.5em 0;
-    border-left: 4px solid;
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 2em;
-    align-items: center;
-    background: #222;
+.center-section {
+    text-align: center;
+    margin: 2rem 0;
 }
 
-.migration-chunk.status_complete {
-    border-color: #4ade80;
-    color: #4ade80;
+.stylized-logo {
+    margin-bottom: 0.5rem;
+    text-align: center;
 }
 
-.migration-chunk.status_in_progress {
-    border-color: #fbbf24;
-    color: #fbbf24;
-}
-
-.migration-chunk.status_scheduled {
-    border-color: #60a5fa;
-    color: #60a5fa;
-}
-
-.migration-chunk.status_paused {
-    border-color: #f87171;
-    color: #f87171;
-}
-
-.migration-chunk.status_not_started {
-    border-color: #6b7280;
-    color: #6b7280;
-}
-
-.migration-chunk > div:first-child {
-    font-weight: 700;
-    font-size: 1em;
-    line-height: 1.4;
-    letter-spacing: 0.05em;
-}
-
-.migration-chunk > div:last-child {
-    font-size: 0.8em;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    opacity: 0.8;
-    white-space: nowrap;
-}
-
-label[for="progress"] {
+.stylized-logo img {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
     display: block;
-    margin: 3rem 0 1rem 0;
-    font-weight: 700;
-    font-size: 0.9em;
-    color: #e0e0e0;
-    letter-spacing: 0.05em;
+    margin: 0 auto;
+}
+
+.migration-title {
+    font-size: 2em;
+    font-weight: bold;
+    margin: 0.5rem 0;
+}
+
+.migration-from-to {
+    font-size: 1.2em;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    margin-left: 8.5rem;
+}
+
+.progress-section {
+    width: 100%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 2px 8px var(--shadow-color);
 }
 
 progress {
     width: 100%;
-    height: 8px;
+    height: 14px;
     border: none;
     appearance: none;
     -webkit-appearance: none;
-    margin-bottom: 2rem;
-    background-color: #333;
+    margin-bottom: 1.5rem;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    overflow: hidden;
 }
 
 progress::-webkit-progress-bar {
-    background-color: #333;
+    background-color: #e0e0e0;
+    border-radius: 3px;
 }
 
 progress::-webkit-progress-value {
-    background-color: #60a5fa;
+    background: linear-gradient(90deg, #0066cc 0%, #0052a3 100%);
+    border-radius: 3px;
+    transition: width 0.3s ease;
 }
 
 progress::-moz-progress-bar {
+    background: linear-gradient(90deg, #0066cc 0%, #0052a3 100%);
+    border-radius: 3px;
+}
+
+@media (prefers-color-scheme: dark) {
+    progress {
+        background-color: #404040;
+    }
+    
+    progress::-webkit-progress-bar {
+        background-color: #404040;
+    }
+    
+    progress::-webkit-progress-value {
+        background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+    }
+
+    progress::-moz-progress-bar {
+        background: linear-gradient(90deg, #3b82f6 0%, #2563eb 100%);
+    }
+}
+
+.progress-text {
+    font-size: 2em;
+    font-weight: 600;
+    color: #0066cc;
+    text-align: center;
+    margin-bottom: 1rem;
+    letter-spacing: -0.5px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .progress-text {
+        color: #3b82f6;
+    }
+}
+
+.last-updated {
+    font-size: 0.85em;
+    color: var(--text-secondary);
+    text-align: center;
+    font-weight: 400;
+}
+
+.status-section {
+    width: 100%;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    box-shadow: 0 1px 4px var(--shadow-color);
+}
+
+.status-header {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.status-list {
+    list-style: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.status-item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: auto auto;
+    padding: 1rem 0;
+    margin: 0;
+    padding-left: 0 !important;
+    border-bottom: 1px solid var(--border-color);
+    gap: 1rem;
+    list-style: none;
+    align-items: start;
+}
+
+.status-item:last-child {
+    border-bottom: none;
+}
+
+.status-label {
+    font-weight: 500;
+    color: var(--text-primary);
+    grid-column: 1;
+    grid-row: 1;
+    margin: 0;
+}
+
+.status-value {
+    display: flex;
+    align-items: center;
+    font-size: 0.9em;
+    color: var(--text-secondary);
+    gap: 0.5rem;
+    grid-column: 1;
+    grid-row: 2;
+    margin: 0;
+    margin-left: calc(-1rem);
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.status-icon-image {
+    width: 14px;
+    height: 14px;
+    grid-column: 2;
+    grid-row: 1 / 3;
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+.status-in-progress .dot {
+    background-color: #1264a3; /* Blue dot for in progress */
+}
+
+@media (prefers-color-scheme: dark) {
+    .status-in-progress .dot {
+        background-color: #60a5fa;
+    }
+}
+
+.status-not-started .dot {
+    background-color: #d1d1d1; /* Gray dot for not started */
+}
+
+/* Add more status classes if needed, e.g., for complete, paused, etc. */
+.status-complete .dot {
+    background-color: #2eb67a; /* Green for complete */
+}
+
+.status-scheduled .dot {
     background-color: #60a5fa;
+}
+
+.status-paused .dot {
+    background-color: #f87171;
+}
+
+.status-not-started-icon {
+    color: #d1d1d1;
+}
+
+.status-complete-icon {
+    color: #2eb67a;
+}
+
+@media (prefers-color-scheme: dark) {
+    .status-not-started-icon {
+        color: #616061;
+    }
 }

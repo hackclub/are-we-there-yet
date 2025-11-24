@@ -29,7 +29,10 @@ def humanize_status(status) = STATUS_MAPPING[status.to_sym] || status.humanize
 
 before do
   headers "X-Frame-Options" => "ALLOWALL"
-  @migration_data = CACHE.fetch("migration_status", expires_in: 1.minute) { fetch_migration_data }
+  data = CACHE.fetch("migration_status", expires_in: 1.minute) { fetch_migration_data }
+  @migration_data = data[:data]
+  @last_updated = data[:updated]
+  @icon_url = CACHE.fetch("icon", expires_in: 5.minutes) { fetch_icon }
 end
 
 get "/" do
@@ -50,4 +53,6 @@ end
 
 def xoxd_get(url, params = {}) = xoxd_client.get(url, params.merge({ token: env!("SLACK_XOXC") })).body
 
-def fetch_migration_data = xoxd_get("enterprise.migrations.getStatus", migration_id: env!("SLACK_MIGRATION_ID"))
+def fetch_migration_data = { data: xoxd_get("enterprise.migrations.getStatus", migration_id: env!("SLACK_MIGRATION_ID")), updated: Time.now }
+
+def fetch_icon = Faraday.get("https://shrimp-shuffler.a.hackclub.dev/api/current").body

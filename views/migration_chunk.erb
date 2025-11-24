@@ -1,4 +1,21 @@
-<div class="migration-chunk status_<%= status %>">
-  <div><%= humanize_item key %></div>
-  <div><%= humanize_status status %></div>
-</div>
+<!-- migration_chunk.erb -->
+<li class="status-item status-<%= status %>">
+  <div class="status-label"><%= humanize_item key %></div>
+  <div class="status-value">
+    <span class="dot"></span>
+    <%= humanize_status status %>
+  </div>
+  <% if status == 'in_progress' %>
+    <img src="/loader.gif" alt="Loading" class="status-icon-image" />
+  <% elsif status == 'not_started' %>
+    <svg class="status-icon-image status-not-started-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="10" cy="10" r="8.5"></circle>
+      <line x1="6" y1="10" x2="14" y2="10"></line>
+    </svg>
+  <% elsif status == 'complete' %>
+    <svg class="status-icon-image status-complete-icon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="10" cy="10" r="8.5"></circle>
+      <polyline points="6 10 9 13 14 8"></polyline>
+    </svg>
+  <% end %>
+</li>
