@@ -29,7 +29,7 @@ def humanize_status(status) = STATUS_MAPPING[status.to_sym] || status.humanize
 
 before do
   headers "X-Frame-Options" => "ALLOWALL"
-  data = CACHE.fetch("migration_status", expires_in: 1.minute) { fetch_migration_data }
+  data = CACHE.fetch("migration_status", expires_in: 20.seconds) { fetch_migration_data }
   @migration_data = data[:data]
   @last_updated = data[:updated]
   @icon_url = CACHE.fetch("icon", expires_in: 5.minutes) { fetch_icon }
