@@ -1,0 +1,19 @@
+<html>
+<% progress = @migration_data["percent_completed"] %>
+<head>
+  <title>are we there yet?</title>
+  <link rel="stylesheet" href="/style.css"/>
+</head>
+
+<body>
+<h1>are we there yet?</h1>
+<h3 class="subtitle">the thinking man's Slack migration status page</h3>
+<% @migration_data["status"].each do |key, status| %>
+  <%= erb :migration_chunk, locals: {key:, status:}%>
+<% end %>
+
+
+<label for="progress">Total progress: <%= progress %>%</label>
+<progress id="progress" max="100" value="<%= progress %>"></progress>
+</body>
+</html>

@@ -1,0 +1,113 @@
+* {
+    box-sizing: border-box;
+}
+
+html {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    font-size: 16px;
+}
+
+body {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+}
+
+h1 {
+    margin: 0 0 0.5rem 0;
+    font-size: 2em;
+    font-weight: 600;
+    color: #e0e0e0;
+}
+
+.subtitle {
+    margin: 0 0 3rem 0;
+    font-size: 0.9em;
+    color: #888;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+}
+
+.migration-chunk {
+    padding: 1.5em;
+    margin: 1.5em 0;
+    border-left: 4px solid;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2em;
+    align-items: center;
+    background: #222;
+}
+
+.migration-chunk.status_complete {
+    border-color: #4ade80;
+    color: #4ade80;
+}
+
+.migration-chunk.status_in_progress {
+    border-color: #fbbf24;
+    color: #fbbf24;
+}
+
+.migration-chunk.status_scheduled {
+    border-color: #60a5fa;
+    color: #60a5fa;
+}
+
+.migration-chunk.status_paused {
+    border-color: #f87171;
+    color: #f87171;
+}
+
+.migration-chunk.status_not_started {
+    border-color: #6b7280;
+    color: #6b7280;
+}
+
+.migration-chunk > div:first-child {
+    font-weight: 700;
+    font-size: 1em;
+    line-height: 1.4;
+    letter-spacing: 0.05em;
+}
+
+.migration-chunk > div:last-child {
+    font-size: 0.8em;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+    white-space: nowrap;
+}
+
+label[for="progress"] {
+    display: block;
+    margin: 3rem 0 1rem 0;
+    font-weight: 700;
+    font-size: 0.9em;
+    color: #e0e0e0;
+    letter-spacing: 0.05em;
+}
+
+progress {
+    width: 100%;
+    height: 8px;
+    border: none;
+    appearance: none;
+    -webkit-appearance: none;
+    margin-bottom: 2rem;
+    background-color: #333;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #333;
+}
+
+progress::-webkit-progress-value {
+    background-color: #60a5fa;
+}
+
+progress::-moz-progress-bar {
+    background-color: #60a5fa;
+}
