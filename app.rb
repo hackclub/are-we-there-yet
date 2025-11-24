@@ -39,6 +39,15 @@ get "/" do
   erb :index
 end
 
+get "/api/status" do
+  content_type :json
+
+  {
+    migration_data: @migration_data,
+    last_updated: @last_updated,
+  }.to_json
+end
+
 def env!(key) = ENV[key] || (raise "please set #{key}!")
 
 def xoxd_client
