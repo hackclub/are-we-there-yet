@@ -53,7 +53,9 @@ def env!(key) = ENV[key] || (raise "please set #{key}!")
 def xoxd_client
   @xoxd_client ||= Faraday.new("https://hackclub.enterprise.slack.com/api/") do |conn|
     conn.headers["cookie"] = "d=#{env!("SLACK_XOXD")}"
-
+    conn.headers["Host"] = "hackclub.enterprise.slack.com"
+    conn.headers["Origin"] = "https://hackclub.enterprise.slack.com"
+    conn.headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:145.0) Gecko/20100101 Firefox/145.0"
     conn.request :url_encoded
     conn.response :json
     conn.response :raise_error
