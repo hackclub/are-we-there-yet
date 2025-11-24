@@ -285,3 +285,33 @@ progress::-moz-progress-bar {
         color: #616061;
     }
 }
+
+.footer-section {
+    text-align: center;
+    margin-top: 2rem;
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+.raycast-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #FF6363;
+    color: white;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: transform 0.1s ease, opacity 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.raycast-button:hover {
+    opacity: 0.9;
+    transform: translateY(-1px);
+}
+
+.raycast-button:active {
+    transform: translateY(0);
+}
