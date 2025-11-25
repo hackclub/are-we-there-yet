@@ -277,12 +277,22 @@ progress::-moz-progress-bar {
 }
 
 .status-complete-icon {
-    color: #2eb67a;
+    /*color: #2eb67a;*/
+}
+
+:root {
+    --warning-bg: #fffcf2;
+    --warning-border: #ffe69b;
+    --warning-fg: #ffc107;
+    --warning-fg-strong: #6a311c;
 }
 
 @media (prefers-color-scheme: dark) {
-    .status-not-started-icon {
-        color: #616061;
+    :root {
+        --warning-bg: #33290b;
+        --warning-border: #7f661c;
+        --warning-fg: #ffe083;
+        --warning-fg-strong: #ffecb4;
     }
 }
 
@@ -314,4 +324,18 @@ progress::-moz-progress-bar {
 
 .raycast-button:active {
     transform: translateY(0);
+}
+
+
+.banner {
+    background: linear-gradient(145deg,color-mix(in srgb,var(--warning-bg) 100%,white 5%),var(--warning-bg));
+    border: 1px solid var(--warning-border);
+    color: var(--warning-fg-strong);
+    border-radius: 10px;
+    padding: .875rem 1.125rem;
+    margin-bottom: 1rem;
+    font-weight: 500;
+    vertical-align: center;
+    box-shadow: 0 2px 6px #00000014,inset 0 1px #ffffff4d,inset 0 -1px 1px #00000014;
+    text-align: left;
 }

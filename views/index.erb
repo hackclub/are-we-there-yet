@@ -17,7 +17,8 @@
 <div class="center-section">
   <div class="stylized-logo"><img src="<%= @icon_url %>"/></div>
   <div class="migration-title">Migration in progress</div>
-  <div class="migration-from-to"><%= from_workspace %> → <%= to_workspace %> <sup><small>(but with enterprise!)</small></sup></div>
+  <div class="migration-from-to"><%= from_workspace %> → <%= to_workspace %>
+    <sup><small>(but with enterprise!)</small></sup></div>
 </div>
 
 <div class="progress-section">
@@ -25,7 +26,15 @@
   <div class="progress-text"><%= progress %>%</div>
   <div class="last-updated">Last updated: <%= last_updated %></div>
 </div>
-
+<% if progress == 100 || @migration_data["status"]&.all? { |item, status| status == "complete" } %>
+  <div class="banner">
+    <b>hang tight!</b> <br/>
+    Slack has finished their side of this migration, but there are a
+    <abbr title="migrating custom profile fields, permissions, finalizing SSO setup">few more things</abbr> we have to
+    do before we reopen.
+    We'll be as quick as we can. We'll send you an email when it's ready!
+  </div>
+<% end %>
 <div class="status-section">
   <div class="status-header">Migration status</div>
   <ul class="status-list">
