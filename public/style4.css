@@ -245,19 +245,19 @@ progress::-moz-progress-bar {
     image-rendering: crisp-edges;
 }
 
-.status-in-progress .dot {
-    background-color: #1264a3; /* Blue dot for in progress */
-}
+/*.status-in-progress .dot {*/
+/*    background-color: #1264a3; !* Blue dot for in progress *!*/
+/*}*/
 
-@media (prefers-color-scheme: dark) {
-    .status-in-progress .dot {
-        background-color: #60a5fa;
-    }
-}
+/*@media (prefers-color-scheme: dark) {*/
+/*    .status-in-progress .dot {*/
+/*        background-color: #60a5fa;*/
+/*    }*/
+/*}*/
 
-.status-not-started .dot {
-    background-color: #d1d1d1; /* Gray dot for not started */
-}
+/*.status-not-started .dot {*/
+/*    background-color: #d1d1d1; !* Gray dot for not started *!*/
+/*}*/
 
 /* Add more status classes if needed, e.g., for complete, paused, etc. */
 /*.status-complete .dot {*/
