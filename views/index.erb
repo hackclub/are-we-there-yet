@@ -1,75 +1,27 @@
-<!-- index.erb -->
-<% progress = @migration_data["percent_completed"] %>
-<% last_updated = @last_updated %>
-<% from_workspace = "Hack Club" %>
-<% to_workspace = "Hack Club" %>
-
+<!DOCTYPE html>
 <html>
 <head>
-  <title>Are we there yet?</title>
-  <link rel="stylesheet" href="/style4.css"/>
-</head>
-
-<body>
-<header>
-  <h1>The Great Slack Enterprise Grid Migration 2k25</h1>
-</header>
-<div class="center-section">
-  <div class="stylized-logo"><img src="<%= @icon_url %>"/></div>
-  <% if @its_done %>
-    <div class="migration-title" style="font-size: 8rem">YES, WE'RE MIGRATED!</div>
-  <% else %>
-    <div class="migration-title">Migration in progress</div>
-  <% end %>
-  <div class="migration-from-to"><%= from_workspace %> → <%= to_workspace %>
-    <sup><small>(but with enterprise!)</small></sup></div>
-</div>
-
-<div class="progress-section">
-  <progress id="progress" max="100" value="<%= progress %>"></progress>
-  <div class="progress-text"><%= progress %>%</div>
-  <div class="last-updated">Last updated: <%= last_updated %></div>
-</div>
-<% if (progress == 100 || @migration_data["status"]&.all? { |item, status| status == "complete" }) && !@its_done %>
-  <div class="banner">
-    <b>hang tight!</b> <br/>
-    Slack has finished their side of this migration, but there are a
-    <abbr title="migrating custom profile fields, permissions, finalizing SSO setup">few more things</abbr> we have to
-    do before we reopen.
-    We'll be as quick as we can. We'll send you an email when it's ready!
-  </div>
-<% end %>
-<div class="status-section">
-  <div class="status-header">Migration status</div>
-  <ul class="status-list">
-    <% @migration_data["status"].each do |key, status| %>
-      <%= erb :migration_chunk, locals: {key: key, status: status, last_updated: last_updated} %>
-    <% end %>
-  </ul>
-</div>
-
-<div class="footer-section">
-  <a href="https://github.com/hackclub/are-we-there-yet-raycast" class="raycast-button" target="_blank">Add to Raycast</a>
-</div>
-
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const lastUpdatedEl = document.querySelector('.last-updated');
-    const text = lastUpdatedEl.textContent;
-    const match = text.match(/Last updated: (.+)/);
-    
-    if (match) {
-      const utcTime = new Date(match[1]);
-      if (!isNaN(utcTime)) {
-        const localTime = utcTime.toLocaleTimeString('en-US', { 
-          hour: 'numeric', 
-          minute: '2-digit', 
-          meridiem: 'short' 
-        });
-        lastUpdatedEl.textContent = `Last updated: ${localTime}`;
-      }
+  <title>Yes</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-family: 'Comic Sans MS', cursive;
     }
-  });
-</script>
+    
+    div {
+      font-size: 200px;
+      font-weight: bold;
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div>yes</div>
 </body>
 </html>
