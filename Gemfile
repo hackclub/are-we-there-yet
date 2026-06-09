@@ -13,4 +13,4 @@ gem "activesupport", "~> 8.1"
 
 gem "rackup", "~> 2.2"
 
-gem "puma", "~> 7.1"
+gem "puma", "~> 7.2"
